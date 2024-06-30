@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run quote-of-day:serve"
+    "start": "nx run quote-of-day:serve",
+    "build": "nx run quote-of-day:build"
   },
   "private": true,
   "dependencies": {
