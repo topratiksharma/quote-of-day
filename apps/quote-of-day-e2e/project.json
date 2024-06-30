@@ -1,0 +1,9 @@
+{
+  "name": "quote-of-day-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/quote-of-day-e2e/src",
+  "implicitDependencies": ["quote-of-day"],
+  "// targets": "to see all targets run: nx show project quote-of-day-e2e --web",
+  "targets": {}
+}
