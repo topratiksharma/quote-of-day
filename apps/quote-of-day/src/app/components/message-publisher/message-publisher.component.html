@@ -21,7 +21,7 @@
 
   <div class="content">
     <div style="padding: 11px">
-      <p>Thur, May 26, 10:41 AM</p>
+      <p>{{ time }}</p>
       @for (message of quotes; track $index) {
       <div class="msg-btn-holder">
         <div
@@ -40,11 +40,12 @@
   <div class="footer">
     <div style="width: 100%; padding: 11px">
       <input
-        placeholder="Message"
+        placeholder="Add your quote for the day..."
+        [(ngModel)]="quote"
         class="text-box"
-        name="message"
-        type="submit"
-        onsubmit="submit()"
+        name="quote"
+        [type]="submit"
+        (keyup.enter)="submit()"
       />
       <div class="send-ico">
         <i style="position: absolute" class="fas fa-paper-plane"></i>

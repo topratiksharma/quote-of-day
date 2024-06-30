@@ -4,11 +4,11 @@
     src="https://cdn.pixabay.com/photo/2016/11/29/04/42/conifers-1867371_960_720.jpg"
   />
   <div>
-    <div>City: {{ weatherDetails.name }}</div>
-    <div>Weather : {{ weatherDetails.weather[0].description }}</div>
-    <div>Wind direction: {{ weatherDetails.wind.deg }}</div>
-    <div>Wind speed: {{ weatherDetails.wind.speed }}</div>
-    <div>Temperature: {{ weatherDetails.main.temp }}</div>
-    <div>Quote:{{ quote }}</div>
+    <div>City: {{ weatherDetails?.name }}</div>
+    <div>Weather : {{ weatherDetails?.weather[0].description }}</div>
+    <div>Wind direction: {{ weatherDetails?.wind.deg }}</div>
+    <div>Wind speed: {{ weatherDetails?.wind.speed }}</div>
+    <div>Temperature: {{ weatherDetails?.main.temp }}</div>
+    <div>Quote:{{ listener.notification$ | async }}</div>
   </div>
 </div>

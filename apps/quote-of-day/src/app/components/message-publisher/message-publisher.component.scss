@@ -33,6 +33,8 @@ body {
   position: fixed;
   z-index: -1;
   animation: zoom 20s infinite alternate;
+  left: 0;
+  top: 0;
 }
 
 .main {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherService } from '../../core/weather/weather.service';
+import { NotificationService } from '../../core/event-service/notificationt';
 
 @Component({
   selector: 'app-home',
@@ -10,16 +11,27 @@ import { WeatherService } from '../../core/weather/weather.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  constructor(private weather: WeatherService) {}
-  public weatherDetails: any = {};
+  constructor(
+    private weather: WeatherService,
+    public listener: NotificationService
+  ) {}
+  public weatherDetails!: any;
   public quote = '';
-  ngOnInit(): void {
+
+  public ngOnInit(): void {
     this.getWeather();
+    this.quoteListener();
   }
 
   public getWeather() {
     this.weather.getWeather().subscribe((weather: any) => {
       this.weatherDetails = weather;
+    });
+  }
+
+  private quoteListener() {
+    this.listener.notification$.subscribe((message: any) => {
+      this.quote = message;
     });
   }
 }
