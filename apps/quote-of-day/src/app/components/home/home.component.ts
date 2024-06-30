@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherService } from '../../core/weather/weather.service';
-import { NotificationService } from '../../core/event-service/notificationt';
+import { NotificationService } from '../../core/notification/notification.service';
+import { ClockService } from '../../core/clock/clock.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ import { NotificationService } from '../../core/event-service/notificationt';
 export class HomeComponent implements OnInit {
   constructor(
     private weather: WeatherService,
-    public listener: NotificationService
+    public listener: NotificationService,
+    public clock: ClockService
   ) {}
   public weatherDetails!: any;
   public quote = '';

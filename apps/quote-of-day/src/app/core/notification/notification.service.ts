@@ -5,17 +5,19 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class NotificationService {
-  public notification$ = new BehaviorSubject<any>('');
-  public bc = new BroadcastChannel('test_channel');
+  public notification$ = new BehaviorSubject<string>(
+    'Add Quote of the day or fuck of..'
+  );
+  public bc = new BroadcastChannel('quote-queue');
   constructor() {
-    this.reciveNotication();
+    this.receiveNotification();
   }
 
   public sendNotification(message: string) {
     this.bc.postMessage(message); /* send */
   }
 
-  public reciveNotication() {
+  public receiveNotification() {
     this.bc.onmessage = (ev: any) => {
       this.notification$.next(ev.data);
     };

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NotificationService } from '../../core/event-service/notificationt';
+import { NotificationService } from '../../core/notification/notification.service';
 
 @Component({
   selector: 'app-message-publisher',

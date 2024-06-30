@@ -3,12 +3,34 @@
     id="backgroundimg"
     src="https://cdn.pixabay.com/photo/2016/11/29/04/42/conifers-1867371_960_720.jpg"
   />
-  <div>
-    <div>City: {{ weatherDetails?.name }}</div>
-    <div>Weather : {{ weatherDetails?.weather[0].description }}</div>
-    <div>Wind direction: {{ weatherDetails?.wind.deg }}</div>
-    <div>Wind speed: {{ weatherDetails?.wind.speed }}</div>
-    <div>Temperature: {{ weatherDetails?.main.temp }}</div>
-    <div>Quote:{{ listener.notification$ | async }}</div>
+  <div class="parent">
+    <div class="geo">
+      <div>
+        <!-- <div>Wind direction: {{ weatherDetails?.wind.deg }}</div> -->
+        <div class="wind">
+          <img
+            src="https://static.vecteezy.com/system/resources/thumbnails/011/338/277/small/blowing-wind-sign-png.png"
+            alt=""
+          />
+          <div>{{ weatherDetails?.wind.speed }} km/hr</div>
+        </div>
+        <div [innerHTML]="clock.clock$ | async"></div>
+      </div>
+      <div>
+        <div>{{ weatherDetails?.name | uppercase }}</div>
+        <div>{{ weatherDetails?.main.temp }} &deg;</div>
+        <div class="weather">
+          {{ weatherDetails?.weather[0].description | titlecase }}
+          <img
+            src="https://openweathermap.org/img/wn/{{
+              weatherDetails?.weather[0].icon
+            }}@2x.png
+            "
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <div class="quote">"{{ listener.notification$ | async }}"</div>
   </div>
 </div>

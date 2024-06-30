@@ -1,17 +1,17 @@
-@font-face {
-  font-family: 'CastoroTitling';
-  src: url('https://s3.us-east-2.amazonaws.com/cdn.spotlessplace.com/wp-content/CastoroTitling-Regular.ttf')
-    format('truetype');
-}
+// @font-face {
+//   font-family: 'CastoroTitling';
+//   src: url('https://s3.us-east-2.amazonaws.com/cdn.spotlessplace.com/wp-content/CastoroTitling-Regular.ttf')
+//     format('truetype');
+// }
 
-@font-face {
-  font-family: BraahOne;
-  src: url('https://s3.us-east-2.amazonaws.com/cdn.spotlessplace.com/wp-content/Merriweather-Regular.ttf');
-}
+// @font-face {
+//   font-family: BraahOne;
+//   src: url('https://s3.us-east-2.amazonaws.com/cdn.spotlessplace.com/wp-content/Merriweather-Regular.ttf');
+// }
 
 body {
   margin: 0;
-  font-family: 'CastoroTitling';
+  font-family: 'poppins';
   font-size: 12px;
 }
 @keyframes zoom {
@@ -148,7 +148,7 @@ body {
 
 .text-box::placeholder {
   color: #c6c6c6;
-  font-family: BraahOne;
+  font-family: 'poppins';
 }
 
 .content {
@@ -168,7 +168,7 @@ body {
   display: inline-block;
   max-width: 100%;
   font-size: 14px;
-  font-family: 'BraahOne';
+  font-family: 'poppins';
 }
 .msg-btn p {
   padding: 10px 15px;
@@ -198,5 +198,42 @@ body {
 
   to {
     rotate: 360deg;
+  }
+}
+
+.parent {
+  font-family: 'poppins';
+  color: white;
+}
+.geo {
+  font-family: 'poppins';
+  display: flex;
+  justify-content: space-between;
+  font-size: 40px;
+}
+.quote {
+  font-size: 15vh;
+  display: flex;
+  justify-content: center;
+  font-family: 'poppins';
+  align-items: center;
+}
+.bolder {
+  font-weight: bold !important;
+  font-family: 'poppins';
+}
+.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+.wind {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100px;
+    height: 100px;
   }
 }
