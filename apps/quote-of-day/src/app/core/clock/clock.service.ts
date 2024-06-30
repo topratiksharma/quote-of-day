@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -8,86 +9,50 @@ export class ClockService {
   public clock$ = new BehaviorSubject('');
 
   constructor() {
-    this.updateClock(); // Initialize clock immediately
-    setInterval(this.updateClock, 1000); // Update the clock every second
+    this.updateClock();
+    setInterval(() => {
+      this.updateClock();
+    }, 1000);
   }
 
   updateClock() {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    let timeString = '';
-    let displayHours = hours % 12 || 12; // Convert hours to 12-hour format, using 12 for 0.
+    //date object
+    const date = new Date();
 
-    if (!this.numberToWords) return;
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var session = 'AM';
 
-    // Determine the time string based on the minutes
-    if (minutes === 0) {
-      timeString = `${this.numberToWords(displayHours)} o'clock`;
-    } else if (minutes === 30) {
-      timeString = `half past ${this.numberToWords(displayHours)}`;
-    } else if (minutes < 30) {
-      timeString = `${this.numberToWords(minutes)} past ${this.numberToWords(
-        displayHours
-      )}`;
-    } else {
-      displayHours = (displayHours % 12) + 1; // Adjust hour display for times beyond the half hour
-      timeString = `${this.numberToWords(60 - minutes)} to ${this.numberToWords(
-        displayHours
-      )}`;
+    if (h == 0) {
+      h = 12;
+    }
+    if (h > 12) {
+      h = h - 12;
+      session = 'PM';
     }
 
-    // Add timezone information
-    const timeZone = now
-      .toLocaleTimeString('en-us', { timeZoneName: 'short' })
-      .split(' ')[2];
-    timeString += ' ';
+    //small tag para los segundos y el pm/am
+    const time = `${h < 10 ? '0' : ''}${h}:${m < 10 ? '0' : ''}${m}:<small>${
+      s < 10 ? '0' : ''
+    }${s}|${session}</small>`;
 
-    // Capitalize and bold last two words
-    const words = timeString.toUpperCase().split(' ');
-    const lastTwoWords = words.slice(-2).join(' '); // Get last two words for bold
-    const restOfWords = words.slice(0, -2).join(' '); // The rest of the time string
+    let text;
 
-    // Update the clock display
-    this.clock$.next(
-      `${restOfWords} <span class="bolder">${lastTwoWords}</span>`
-    );
-  }
+    if (h >= 5 && h <= 8 && session === 'AM') {
+      text = `Good Morning`;
+    } else if (h > 8 && h < 12 && session === 'AM') {
+      text = `Good Day`;
+    } else if (h >= 1 && h <= 5 && session === 'PM') {
+      text = `Good Afternoon`;
+    } else if (h <= 10 && session === 'PM') {
+      text = `Good Evening`;
+    } else {
+      text = `Good Night`;
+    }
 
-  private numberToWords(number: number) {
-    const words = [
-      'zero',
-      'one',
-      'two',
-      'three',
-      'four',
-      'five',
-      'six',
-      'seven',
-      'eight',
-      'nine',
-      'ten',
-      'eleven',
-      'twelve',
-      'thirteen',
-      'fourteen',
-      'fifteen',
-      'sixteen',
-      'seventeen',
-      'eighteen',
-      'nineteen',
-      'twenty',
-      'twenty-one',
-      'twenty-two',
-      'twenty-three',
-      'twenty-four',
-      'twenty-five',
-      'twenty-six',
-      'twenty-seven',
-      'twenty-eight',
-      'twenty-nine',
-      'thirty',
-    ];
-    return words[number];
+    if (!this.clock$) return;
+
+    this.clock$.next(`${text} ${time}`);
   }
 }

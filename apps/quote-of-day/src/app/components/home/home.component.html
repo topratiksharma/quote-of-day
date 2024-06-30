@@ -6,16 +6,16 @@
   <div class="parent">
     <div class="geo">
       <div>
-        <!-- <div>Wind direction: {{ weatherDetails?.wind.deg }}</div> -->
         <div class="wind">
           <img
             src="https://static.vecteezy.com/system/resources/thumbnails/011/338/277/small/blowing-wind-sign-png.png"
-            alt=""
+            alt="wind"
           />
           <div>{{ weatherDetails?.wind.speed }} km/hr</div>
         </div>
-        <div [innerHTML]="clock.clock$ | async"></div>
       </div>
+      <div [innerHTML]="clock.clock$ | async"></div>
+
       <div>
         <div>{{ weatherDetails?.name | uppercase }}</div>
         <div>{{ weatherDetails?.main.temp }} &deg;</div>

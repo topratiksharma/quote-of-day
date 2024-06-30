@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NotificationService {
   public notification$ = new BehaviorSubject<string>(
-    'Add Quote of the day or fuck of..'
+    'Add Quote of the day or you know what to do..'
   );
   public bc = new BroadcastChannel('quote-queue');
   constructor() {
