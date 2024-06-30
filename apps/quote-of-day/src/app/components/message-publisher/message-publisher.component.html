@@ -1,1 +1,54 @@
-<p>message-publisher works!</p>
+<link
+  rel="stylesheet"
+  href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+<img
+  id="backgroundimg"
+  src="https://cdn.pixabay.com/photo/2016/11/29/04/42/conifers-1867371_960_720.jpg"
+/>
+<div class="main">
+  <div class="header">
+    <div class="center">
+      <div>
+        <img class="pfp" src="assets/header.png" alt="image" />
+        <p id="pfpname">Quotes</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div style="padding: 11px">
+      <p>Thur, May 26, 10:41 AM</p>
+      @for (message of quotes; track $index) {
+      <div class="msg-btn-holder">
+        <div
+          class="msg-btn"
+          [ngClass]="{
+            'receiver-msg': message.type === 'in',
+            'sender-msg': message.type === 'out'
+          }"
+        >
+          <p>{{ message.text }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="footer">
+    <div style="width: 100%; padding: 11px">
+      <input
+        placeholder="Message"
+        class="text-box"
+        name="message"
+        type="submit"
+        onsubmit="submit()"
+      />
+      <div class="send-ico">
+        <i style="position: absolute" class="fas fa-paper-plane"></i>
+      </div>
+    </div>
+  </div>
+</div>

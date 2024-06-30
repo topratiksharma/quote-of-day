@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { WeatherService } from '../../core/weather/weather.service';
 
 @Component({
   selector: 'app-home',
@@ -8,4 +9,17 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  constructor(private weather: WeatherService) {}
+  public weatherDetails: any = {};
+  public quote = '';
+  ngOnInit(): void {
+    this.getWeather();
+  }
+
+  public getWeather() {
+    this.weather.getWeather().subscribe((weather: any) => {
+      this.weatherDetails = weather;
+    });
+  }
+}
