@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
   public quote = '';
 
   public ngOnInit(): void {
-    this.getWeather();
+    setInterval(()=> {
+      this.getWeather();
+    },1000);
     this.quoteListener();
   }
 
