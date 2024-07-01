@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   public ngOnInit(): void {
     setInterval(()=> {
       this.getWeather();
-    },1000);
+    }, 10000);
     this.quoteListener();
   }
 
