@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   public getWeather() {
     this.weather.getWeather().subscribe((weather: any) => {
       this.weatherDetails = weather;
+      this.weatherDetails.main.temp = Math.round(this.weatherDetails.main.temp);
     });
   }
 
