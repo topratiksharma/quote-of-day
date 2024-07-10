@@ -28,7 +28,9 @@ export class ClockService {
       h = 12;
     }
     if (h > 12) {
-      h = h - 12;
+      h = h - 12;      
+    }
+    if (h > 11) {
       session = 'PM';
     }
 
