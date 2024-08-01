@@ -25,7 +25,7 @@ export class ClockService {
     let session = 'AM';
 
     if(h > 12) {
-      session = 'PM';
+      session = 'PM'; 
     }
     // if (h == 0) {
     //   h = 12;
@@ -59,7 +59,7 @@ export class ClockService {
         text = `Good Morning`;
       } else if (h > 9 && h < 12) {
         text = `Good Day`;
-      } else if (h >= 13 && h <= 5) {
+      } else if (h >= 13 && h <= 17) {
         text = `Good Afternoon`;
       } else if (h <= 22) {
         text = `Good Evening`;
